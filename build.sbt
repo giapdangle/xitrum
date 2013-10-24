@@ -2,9 +2,9 @@ organization := "tv.cntt"
 
 name := "xitrum"
 
-version := "2.10-SNAPSHOT"
+version := "13.10.24-SNAPSHOT"
 
-scalaVersion := "2.10.2"
+scalaVersion := "2.10.3"
 
 scalacOptions ++= Seq(
   "-deprecation",
@@ -57,10 +57,24 @@ libraryDependencies += "tv.cntt" % "rhinocoffeescript" % "1.6.3"
 // Hazelcast is used for distributed cache and SockJS --------------------------
 
 // Infinispan is good but much heavier
-libraryDependencies += "com.hazelcast" % "hazelcast" % "3.0.2"
+libraryDependencies += "com.hazelcast" % "hazelcast" % "2.6.4"
 
 // Hazelcast can be configured as cluster member, lite member, or Java client
-libraryDependencies += "com.hazelcast" % "hazelcast-client" % "3.0.2"
+libraryDependencies += "com.hazelcast" % "hazelcast-client" % "2.6.4"
+
+// By default, version 2.10.0 of the libs below is used!!! ---------------------
+
+libraryDependencies <+= scalaVersion { sv =>
+  "org.scala-lang" % "scala-compiler" % sv
+}
+
+libraryDependencies <+= scalaVersion { sv =>
+  "org.scala-lang" % "scala-reflect" % sv
+}
+
+libraryDependencies <+= scalaVersion { sv =>
+  "org.scala-lang" % "scalap" % sv
+}
 
 // xitrum.imperatively uses Scala continuation, a compiler plugin --------------
 
